@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <packaging>jar</packaging>
+    <groupId>org.webjars</groupId>
+    <artifactId>bootstrap-glyphicons</artifactId>
+    <version>bdd2cbfba0-SNAPSHOT</version>
+    <name>Glyphicons for Bootstrap</name>
+    <description>WebJar for Glyphicons for Bootstrap</description>
+    <url>http://webjars.org</url>
+
+    <developers>
+        <developer>
+            <id>jamesward</id>
+            <name>James Ward</name>
+            <email>james@jamesward.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://github.com/twbs/bootstrap-glyphicons/blob/gh-pages/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>http://github.com/webjars/bootstrap-glyphicons</url>
+        <connection>scm:git:https://github.com/webjars/bootstrap-glyphicons.git</connection>
+        <developerConnection>scm:git:https://github.com/webjars/bootstrap-glyphicons.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <upstream.version>bdd2cbfba0</upstream.version>
+        <upstream.commit>bdd2cbfba0ca407c6b7e45d84558de6aec010546</upstream.commit>
+        <upstream.url>https://github.com/twbs/bootstrap-glyphicons/raw/${upstream.commit}</upstream.url>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
+    </properties>
+    
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-http</artifactId>
+                <version>2.4</version>
+            </extension>
+        </extensions>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>wagon-maven-plugin</artifactId>
+                <version>1.0-beta-4</version>
+                <executions>
+                    <execution>
+                        <id>font-eot</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url}</url>
+                            <fromFile>fonts/glyphiconshalflings-regular.eot</fromFile>
+                            <toDir>${destDir}/fonts</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>font-svg</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url}</url>
+                            <fromFile>fonts/glyphiconshalflings-regular.svg</fromFile>
+                            <toDir>${destDir}/fonts</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>font-otf</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url}</url>
+                            <fromFile>fonts/glyphiconshalflings-regular.otf</fromFile>
+                            <toDir>${destDir}/fonts</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>font-ttf</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url}</url>
+                            <fromFile>fonts/glyphiconshalflings-regular.ttf</fromFile>
+                            <toDir>${destDir}/fonts</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>font-woff</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url}</url>
+                            <fromFile>fonts/glyphiconshalflings-regular.woff</fromFile>
+                            <toDir>${destDir}/fonts</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>less</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url}</url>
+                            <fromFile>less/bootstrap-glyphicons.less</fromFile>
+                            <toDir>${destDir}/less</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>bootstrap-glyphicons.css</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url}</url>
+                            <fromFile>css/bootstrap-glyphicons.css</fromFile>
+                            <toDir>${destDir}/css</toDir>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.3.2</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
